@@ -1,0 +1,36 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+
+    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h3>Podes buscar una especialidad:</h3>
+
+    <form action="/App/buscar/" method="GET">
+
+        <input type="text" name="especialidad" id="especialidad">
+
+        <input type="submit" value="Buscar">
+
+    </form>
+
+    
+
+    {% if especialidad %}
+
+    <p>Estamos buscando el: {{especialidad}}</p>
+
+    <ul>
+	{% for medico in medicos %}
+		<li> {{medico.nombre}} </li>
+        <li> {{medico.apellido}} </li>
+		<li> {{medico.especialidad}} </li>
+	{% endfor %}
+
+    </ul>
+   
+    {% endif %}
+
+{% endblock %}
